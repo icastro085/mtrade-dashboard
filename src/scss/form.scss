@@ -1,0 +1,28 @@
+form {
+  * {
+    vertical-align: middle;
+    line-height: 30px;
+  }
+
+  input, select {
+    @include border;
+    padding: $padding-base;
+    border-radius: $border-radius;
+    background-color: #fff;
+  }
+
+  label {
+    & + input, & + select {
+      margin-left: $margin-base;
+
+      & + label {
+        margin-left: $margin-base;
+      }
+    }
+  }
+}
+
+label {
+  padding: $padding-base 0;
+  display: inline-block;
+}
