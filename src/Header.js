@@ -4,6 +4,12 @@ export default function Header() {
   return (
     <header className="header">
       <a href="/#/">Sistema de configurações</a>
+
+      <div className="options">
+        <div className="user">
+          <i className="fas fa-user" />
+        </div>
+      </div>
     </header>
   );
 }
