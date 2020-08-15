@@ -1,0 +1,133 @@
+mutation AddCategory($category: CategoryInput) {
+  category: addCategory(category: $category) {
+    ...Category
+  }
+}
+
+mutation UpdateCategory($categoryId: ID!, $category: CategoryInput) {
+  category: updateCategory(id: $categoryId, category: $category) {
+    ...Category
+  }
+}
+
+mutation DeleteCategory($categoryId: ID!) {
+  result: deleteCategory(id: $categoryId) {
+    ok
+    deletedCount
+  }
+}
+
+query GetCategoryById($categoryId: ID!) {
+  category: getCategoryById(id: $categoryId) {
+    ...Category
+  }
+}
+
+query GetCategories(
+  $name: String,
+  $limit: Int! = 10,
+  $page: Int = 0
+) {
+  categories: getCategories(
+    name: $name,
+    limit: $limit,
+    page: $page
+	) {
+    ...CategoryCompacted
+  }
+  total: getCategoriesTotal(name: $name)
+}
+
+fragment Category on Category {
+  _id
+  name
+  parent {
+    _id
+    name
+  }
+  children {
+    _id
+    name
+  }
+}
+
+fragment CategoryCompacted on Category {
+  _id
+  name
+}
+
+mutation AddProduct($product: ProductInput) {
+  product: addProduct(product: $product) {
+    ...Product
+  }
+}
+
+mutation UpdateProduct($productId: ID!, $product: ProductInput) {
+  product: updateProduct(id: $productId, product: $product) {
+    ...Product
+  }
+}
+
+mutation DeleteProduct($productId: ID!) {
+  result: deleteProduct(id: $productId) {
+    ok
+    deletedCount
+  }
+}
+
+query GetProductById($productId: ID!) {
+  product: getProductById(id: $productId) {
+    ...Product
+  }
+}
+
+query GetProducts(
+  $name: String,
+  $description: String,
+  $limit: Int! = 10,
+  $page: Int = 0
+) {
+  products: getProducts(
+    name: $name,
+    description: $description,
+    limit: $limit,
+    page: $page
+  ) {
+    ...ProductCompacted
+  }
+  total: getProductsTotal(
+    name: $name,
+    description: $description
+  )
+}
+
+fragment Product on Product {
+  _id
+  name
+  price
+  priceOld
+  description
+  categories {
+    _id
+    name
+  }
+  info {
+    label
+    value
+  }
+  images {
+    name
+    source
+  }
+}
+
+fragment ProductCompacted on Product {
+  _id
+  name
+  price
+  priceOld
+  images {
+    name
+    source
+  }
+}

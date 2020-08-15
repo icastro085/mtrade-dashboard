@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 22px;
-  padding: 20px 20px 20px 10px;
+  padding: 20px;
   background-color: #151515;
   color: #fff;
 
@@ -42,7 +42,7 @@
         color: #95989a;
         width: 100%;
         display: block;
-        padding: 20px 10px;
+        padding: 20px;
       }
 
       &.selected {
@@ -59,7 +59,7 @@
           transform: translateY(-10px) rotate(45deg);
         }
 
-        a {
+        a, i {
           color: #fff;
         }
       }

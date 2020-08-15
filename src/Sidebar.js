@@ -11,13 +11,13 @@ export default function Sidebar() {
     <section className="sidebar">
       <ul>
         <li className={classNames({ selected: isSelected(location, '/') })}>
-          <a href="/#/">Home</a>
+          <a href="/#/"><i className="fas fa-home mr-2" /> Home</a>
         </li>
         <li className={classNames({ selected: isSelected(location, '/category') })}>
-          <a href="/#/category">Category</a>
+          <a href="/#/category"><i className="fas fa-sitemap mr-2" /> Category</a>
         </li>
         <li className={classNames({ selected: isSelected(location, '/product') })}>
-          <a href="/#/product">Product</a>
+          <a href="/#/product"><i className="fas fa-gift mr-2" /> Product</a>
         </li>
       </ul>
     </section>

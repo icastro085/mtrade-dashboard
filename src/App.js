@@ -8,6 +8,7 @@ import {
 import Header from './Header';
 import Home from './Home';
 import Sidebar from './Sidebar';
+import CategorySearch from './CategorySearch';
 
 export default function App() {
   return (
@@ -18,7 +19,8 @@ export default function App() {
           <Sidebar />
           <main className="container">
             <Switch>
-              <Route path="/"><Home /></Route>
+              <Route exact path="/"><Home /></Route>
+              <Route exact path="/category"><CategorySearch /></Route>
             </Switch>
           </main>
         </Router>

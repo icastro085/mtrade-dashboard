@@ -42,6 +42,10 @@ const config = {
         test: /\.(png|svg|jpg|gif)$/,
         use: ['file-loader'],
       },
+      {
+        test: /\.graphql?$/,
+        loader: 'webpack-graphql-loader'
+      },
     ],
   },
 };
