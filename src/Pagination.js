@@ -36,7 +36,7 @@ export default function Pagination({ totalItems }) {
             onClick={() => setCurrentPage(previousPage)}
             role="button"
             tabIndex={0}>
-            Anterior
+            {__('pagination.previous')}
           </a>
         </li>
 
@@ -121,7 +121,7 @@ export default function Pagination({ totalItems }) {
             onClick={() => setCurrentPage(nextPage)}
             role="button"
             tabIndex={nextPage}>
-            Próximo
+            {__('pagination.next')}
           </a>
         </li>
       </ul>

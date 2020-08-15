@@ -25,7 +25,7 @@ query GetCategoryById($categoryId: ID!) {
 
 query GetCategories(
   $name: String,
-  $limit: Int! = 10,
+  $limit: Int! = 8,
   $page: Int = 0
 ) {
   categories: getCategories(

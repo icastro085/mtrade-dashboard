@@ -1,0 +1,36 @@
+{
+  "app": {
+    "title": "Sistema de configurações",
+    "welcome": "Bem-vindo!"
+  },
+  "sidebar": {
+    "home": "Home",
+    "category": "Categoria",
+    "product": "Producto"
+  },
+  "input-search": {
+    "buttons": {
+      "create": "Criar"
+    },
+    "input": {
+      "placeholder": "Digite o texto e tecle enter..."
+    }
+  },
+  "table": {
+    "buttons": {
+      "edit": "Editar",
+      "remove": "Remover"
+    }
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Pŕoximo"
+  },
+  "category": {
+    "table": {
+      "header": {
+        "name": "Nome"
+      }
+    }
+  }
+}

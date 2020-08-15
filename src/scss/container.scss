@@ -72,3 +72,12 @@
   background-color: #fff;
   padding: 20px;
 }
+
+.welcome {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 80px);
+  justify-content: center;
+  align-items: center;
+  font-size: 58px;
+}

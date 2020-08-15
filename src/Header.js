@@ -3,7 +3,7 @@ import React from 'react';
 export default function Header() {
   return (
     <header className="header">
-      <a href="/#/">Sistema de configurações</a>
+      <a href="/#/">{__('app.title')}</a>
 
       <div className="options">
         <div className="user">

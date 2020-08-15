@@ -15,7 +15,7 @@ export default function CategorySearch() {
         <InputSearch className="col-6" />
         <div className="col-6 text-right">
           <button type="button" className="primary">
-            <i className="fas fa-plus mr-2" /> Create
+            <i className="fas fa-plus mr-2" /> {__('input-search.buttons.create')}
           </button>
         </div>
       </div>

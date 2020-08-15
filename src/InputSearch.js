@@ -10,14 +10,19 @@ export default function InputSearch({ className = '' }) {
     e.preventDefault();
 
     const { value = '' } = input.current;
-    addQuery({ text: value.trim() });
+    const textFormatted = value.trim().replace(/\s+/g, ' ');
+    addQuery({ text: textFormatted });
   };
 
   return (
     <form className={classNames(className)} onSubmit={onSubmit}>
       <div className="row">
         <div className="col-12 d-flex group-fields">
-          <input ref={input} type="text" defaultValue={text} />
+          <input
+            ref={input}
+            type="text"
+            defaultValue={text}
+            placeholder={__('input-search.input.placeholder')} />
           <button type="submit">
             <i className="fas fa-search" />
           </button>
