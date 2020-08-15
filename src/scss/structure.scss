@@ -2,8 +2,8 @@
   #{$pm-prop}: ($pm-base * ($i));
 }
 
-@mixin border($border-color: $color-6) {
-  border: 1px solid $border-color;
+@mixin border($border-color: $color-6, $border-prop: border) {
+  #{$border-prop}: 1px solid $border-color;
 }
 
 @each $index, $color in (
@@ -33,6 +33,7 @@
 
   @for $i from 1 through $max-columns {
     .col-#{$i} {
+      display: flex;
       width: 100% / ($max-columns / $i);
       padding-left: $padding-base;
       padding-right: $padding-base;
@@ -104,6 +105,10 @@ table {
     padding: $padding-base;
     text-align: left;
   }
+
+  th {
+    @include border($color-4, 'border-bottom');
+  }
 }
 
 .pagination {
@@ -144,10 +149,15 @@ table {
 }
 
 button {
-  border: 1px solid $color-3;
+  @include border;
+  @include border-radius;
   background-color: #fff;
   padding: $padding-base;
   color: $color-2;
+  cursor: pointer;
+}
 
-  @include border-radius;
+hr {
+  margin: 30px 0;
+  border: 1px solid $color-4;
 }

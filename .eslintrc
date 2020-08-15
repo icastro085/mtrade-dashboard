@@ -16,7 +16,8 @@
     "radix": 0,
     "no-underscore-dangle": 0,
     "jsx-a11y/anchor-is-valid": 0,
-    "react/jsx-closing-bracket-location": [1, "after-props"]
+    "react/jsx-closing-bracket-location": [1, "after-props"],
+    "no-nested-ternary": 0
   },
   "globals": {
     "document": true,

@@ -2,6 +2,7 @@ import React from 'react';
 import usePagination from './hooks/usePagination';
 
 const PAGINATION_RANGE = 8;
+const PAGE_MIN = 1;
 
 export default function Pagination({ totalItems }) {
   const {
@@ -11,6 +12,10 @@ export default function Pagination({ totalItems }) {
     totalPages,
     setCurrentPage,
   } = usePagination({ totalItems });
+
+  if (totalPages <= PAGE_MIN) {
+    return null;
+  }
 
   const baseLimitRight = totalPages - 1;
 
