@@ -14,7 +14,9 @@
     "jsx-a11y/label-has-associated-control": 0,
     "react-hooks/exhaustive-deps": 0,
     "radix": 0,
-    "no-underscore-dangle": 0
+    "no-underscore-dangle": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "react/jsx-closing-bracket-location": [1, "after-props"]
   },
   "globals": {
     "document": true,

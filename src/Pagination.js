@@ -1,18 +1,124 @@
 import React from 'react';
+import usePagination from './hooks/usePagination';
 
-export default function Pagination() {
+const PAGINATION_RANGE = 8;
+
+export default function Pagination({ totalItems }) {
+  const {
+    previousPage,
+    currentPage,
+    nextPage,
+    totalPages,
+    setCurrentPage,
+  } = usePagination({ totalItems });
+
+  const baseLimitRight = totalPages - 1;
+
+  const limitLeft = (currentPage > PAGINATION_RANGE / 2)
+    ? 1
+    : 4;
+
+  const limitRight = currentPage < baseLimitRight - PAGINATION_RANGE / 2
+    ? baseLimitRight - 1
+    : baseLimitRight - 4;
+
   return (
     <nav className="pagination">
       <ul>
-        <li><a href="/#/">Anterior</a></li>
-        <li><a href="/#/">1</a></li>
-        <li><a href="/#/">2</a></li>
-        <li><a href="/#/">3</a></li>
-        <li><a href="/#/">4</a></li>
-        <li><a href="/#/">5</a></li>
-        <li><a href="/#/">6</a></li>
-        <li><a href="/#/">7</a></li>
-        <li><a href="/#/">Próximo</a></li>
+        <li className="page-item">
+          <a
+            className="page-link"
+            onClick={() => setCurrentPage(previousPage)}
+            role="button"
+            tabIndex={0}>
+            Anterior
+          </a>
+        </li>
+
+        {
+          [...Array(totalPages).keys()].map((page) => {
+            if (
+              totalPages > PAGINATION_RANGE
+              && page > limitLeft
+              && page < limitRight
+              && (
+                [previousPage, currentPage, nextPage].indexOf(page) === -1
+                || (
+                  currentPage <= limitLeft
+                  && [previousPage, currentPage].indexOf(page) === -1
+                )
+                || (
+                  currentPage >= limitRight
+                  && [currentPage, nextPage].indexOf(page) === -1
+                )
+              )
+            ) {
+              return null;
+            }
+
+            return (
+              [
+                (
+                  totalPages > PAGINATION_RANGE
+                  && page === (
+                    currentPage < limitRight
+                      ? currentPage - 1
+                      : limitRight
+                  )
+                  && page > (limitLeft + 1)
+                )
+                  ? (
+                    <li className="page-item" key={`${page}-dotleft`}>
+                      <span className="page-link">...</span>
+                    </li>
+                  ) : null,
+                (
+                  page === currentPage
+                    ? (
+                      <li className="page-item active" key={page}>
+                        <span className="page-link">{page + 1}</span>
+                      </li>
+                    )
+                    : (
+                      <li className="page-item" key={page}>
+                        <a
+                          className="page-link"
+                          onClick={() => setCurrentPage(page)}
+                          role="button"
+                          tabIndex={page}>
+                          {page + 1}
+                        </a>
+                      </li>
+                    )
+                ),
+                (
+                  totalPages > PAGINATION_RANGE
+                  && page === (
+                    currentPage > limitLeft
+                      ? currentPage + 1
+                      : limitLeft
+                  )
+                  && page < (limitRight - 1)
+                )
+                  ? (
+                    <li className="page-item" key={`${page}-dotright`}>
+                      <span className="page-link">...</span>
+                    </li>
+                  ) : null,
+              ]
+            );
+          })
+        }
+
+        <li className="page-item">
+          <a
+            className="page-link"
+            onClick={() => setCurrentPage(nextPage)}
+            role="button"
+            tabIndex={nextPage}>
+            Próximo
+          </a>
+        </li>
       </ul>
     </nav>
   );

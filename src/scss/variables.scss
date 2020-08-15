@@ -1,9 +1,9 @@
 $background-color: #fff;
 
-$color-1: #7fa8b3;
-$color-2: #434242;
-$color-3: #9c89b8;
-$color-4: #62ba9e;
+$color-1: #151515;
+$color-2: #95989a;
+$color-3: #999;
+$color-4: #f2f2f2;
 $color-5: #999;
 $color-6: #ccc;
 
@@ -15,3 +15,7 @@ $margin-base: 10px;
 
 $pm-max-number: 5;
 $pm-base: 5px;
+
+@mixin border-radius {
+  border-radius: $border-radius;
+}

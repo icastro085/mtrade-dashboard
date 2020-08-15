@@ -29,17 +29,16 @@
 .sidebar {
   width: 300px;
   min-height: calc(100vh - 60px);
-  background-color: #151515;
-  border-top: 1px solid #151515;
-  color: #95989a;
+  background-color: $color-1;
+  border-top: 1px solid $color-1;
 
   ul {
     li {
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid #000;
 
       a {
         text-decoration: none;
-        color: #95989a;
+        color: $color-2;
         width: 100%;
         display: block;
         padding: 20px;

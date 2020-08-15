@@ -25,7 +25,7 @@
   }
 }
 
-.row, .row-fluid {
+.row {
   display: flex;
   flex-wrap: wrap;
   margin-left: -$padding-base;
@@ -38,11 +38,6 @@
       padding-right: $padding-base;
     }
   }
-}
-
-.row-fluid {
-  margin-left:0;
-  margin-right: 0;
 }
 
 @for $i from 1 through $pm-max-number {
@@ -72,23 +67,47 @@
     @include pm-value(margin-left, $i);
   }
 
-  .px-#{$i} {
+  .pt-#{$i} {
+    @include pm-value(padding-top, $i);
+  }
+
+  .pb-#{$i} {
+    @include pm-value(padding-bottom, $i);
+  }
+
+  .pr-#{$i} {
     @include pm-value(padding-right, $i);
+  }
+
+  .pl-#{$i} {
+    @include pm-value(padding-left, $i);
+  }
+
+  .py-#{$i} {
+    @include pm-value(padding-top, $i);
+    @include pm-value(padding-bottom, $i);
+  }
+
+  .px-#{$i} {
+    @include pm-value(margin-right, $i);
     @include pm-value(padding-left, $i);
   }
 }
 
 table {
   width: 100%;
+  border-collapse: collapse;
 
-  td {
+  tr:nth-child(even) {background-color: $color-4;}
+
+  th, td {
     padding: $padding-base;
-    border: 1px solid $color-6;
+    text-align: left;
   }
 }
 
 .pagination {
-  ul li {
+  .page-item {
     @include border($color-3);
     float: left;
     font-size: 20px;
@@ -96,17 +115,39 @@ table {
     text-align: center;
     background-color: #fff;
     margin-right: $margin-base;
+    user-select: none;
 
-    a {
+    .page-link {
       text-decoration: none;
       color: $color-3;
       display: block;
       min-width: 40px;
       padding: $padding-base;
     }
+
+    a.page-link {
+      cursor: pointer;
+    }
+
+    &.active {
+      @include border($color-1);
+      background-color: $color-1;
+      .page-link {
+        color: #fff;
+      }
+    }
   }
 }
 
 .clear-both {
   clear: both;
+}
+
+button {
+  border: 1px solid $color-3;
+  background-color: #fff;
+  padding: $padding-base;
+  color: $color-2;
+
+  @include border-radius;
 }
