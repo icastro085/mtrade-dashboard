@@ -11,7 +11,14 @@ export default function CategorySearch() {
 
   return (
     <>
-      <InputSearch />
+      <div className="row">
+        <InputSearch className="col-6" />
+        <div className="col-6 text-right">
+          <button type="button" className="primary">
+            <i className="fas fa-plus mr-2" /> Create
+          </button>
+        </div>
+      </div>
 
       <hr />
 
