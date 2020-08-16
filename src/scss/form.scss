@@ -13,16 +13,6 @@ form {
     width: 100%;
   }
 
-  label {
-    & + input, & + select {
-      margin-left: $margin-base;
-
-      & + label {
-        margin-left: $margin-base;
-      }
-    }
-  }
-
   .group-fields > * {
     &:first-child {
       border-radius: $border-radius 0 0 $border-radius;

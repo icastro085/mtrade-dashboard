@@ -21,7 +21,7 @@ export default function CategorySearch() {
         icon={<i className="fas fa-sitemap" />}
         title="category.title">
         <button type="button" className="primary" onClick={onClickRegistry}>
-          <i className="fas fa-plus mr-2" /> {__('buttons.create')}
+          <i className="fas fa-plus mr-2" /> {__('buttons.new')}
         </button>
       </BarControl>
 

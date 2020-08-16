@@ -5,7 +5,7 @@ export default function CategorySearchTable({ categories }) {
     <table className="mb-5">
       <thead>
         <tr>
-          <th>{__('category.table.header.name')}</th>
+          <th>{__('category.fields.name')}</th>
           <th>&nbsp;</th>
         </tr>
       </thead>

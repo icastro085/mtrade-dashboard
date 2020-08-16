@@ -9,7 +9,8 @@
     "product": "Producto"
   },
   "buttons": {
-    "create": "Criar",
+    "back": "Voltar",
+    "new": "Novo",
     "save": "Salvar"
   },
   "input-search": {
@@ -32,10 +33,8 @@
   },
   "category": {
     "title": "Categoria",
-    "table": {
-      "header": {
-        "name": "Nome"
-      }
+    "fields": {
+      "name": "Nome"
     }
   }
 }
