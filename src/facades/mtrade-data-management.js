@@ -26,6 +26,11 @@ const mtradeDM = async ({ operationName, variables = {} }) => {
   return data;
 };
 
+export const addCategory = async (variables = {}) => mtradeDM({
+  operationName: 'AddCategory',
+  variables,
+});
+
 export const getCategories = async (variables = {}) => mtradeDM({
   operationName: 'GetCategories',
   variables,

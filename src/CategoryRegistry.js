@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import useCategories from './hooks/useCategories';
+import useCategoryMutation from './hooks/useCategoryMutation';
 
 import BarControl from './ControlBar';
 import Select from './Select';
 
 import CategoryModel from './model/Category';
 
+const { error } = console;
+
 export default function CategoryRegistry() {
   const history = useHistory();
   const { data = {} } = useCategories();
+  const [category, setCategory] = useState({ ...CategoryModel });
+  const [mutation] = useCategoryMutation();
 
   const onClickBack = () => {
     history.push('/category');
@@ -19,12 +24,33 @@ export default function CategoryRegistry() {
     history.push('/category/registry');
   };
 
-  const onClickSave = () => {
-    console.log('safasdfasdfad');
+  const onClickSave = async () => {
+    try {
+      const {
+        category: categoryResponse = {},
+        error: categoryError,
+      } = await mutation(category);
+
+      if (categoryError) {
+        error(categoryError);
+      } else {
+        setCategory(categoryResponse);
+      }
+    } catch (e) {
+      error(e);
+    }
   };
 
-  const onChangeSelect = (parentId, valueSelected) => {
-    console.log(parentId, valueSelected, CategoryModel);
+  const onChangeSelect = (parentId) => {
+    category.parent = {
+      _id: parentId,
+    };
+    setCategory({ ...category });
+  };
+
+  const onChangeName = ({ target }) => {
+    category.name = target.value;
+    setCategory({ ...category });
   };
 
   const { categories = [] } = data;
@@ -53,6 +79,7 @@ export default function CategoryRegistry() {
         <div className="row">
           <div className="col-6">
             <Select
+              value={(category.parent || {})._id}
               onChange={onChangeSelect}
               placeholder={__('category.field-placeholder.parent')}
               items={categories.map(({ _id, name }) => ({ id: _id, value: name }))}>
@@ -66,6 +93,8 @@ export default function CategoryRegistry() {
             <label>{__('category.fields.name')}</label>
             <input
               type="text"
+              value={category.name}
+              onChange={onChangeName}
               placeholder={__('category.field-placeholder.name')} />
           </div>
         </div>

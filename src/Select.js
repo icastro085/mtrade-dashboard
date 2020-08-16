@@ -23,8 +23,7 @@ export default function Select({
           type="text"
           value={valueSelected}
           className="select"
-          placeholder={placeholder}
-        />
+          placeholder={placeholder} />
         <ul>
           {
             items.map(({ id, value }) => (
