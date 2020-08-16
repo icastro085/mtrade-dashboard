@@ -11,7 +11,7 @@ export default function InputSearch({ className = '' }) {
 
     const { value = '' } = input.current;
     const textFormatted = value.trim().replace(/\s+/g, ' ');
-    addQuery({ text: textFormatted });
+    addQuery({ text: textFormatted, page: 0 });
   };
 
   return (
