@@ -1,0 +1,67 @@
+.select-container {
+  position: relative;
+}
+
+input.select {
+  & + ul {
+    position: absolute;
+    top: 100%;
+    background-color: #fff;
+    z-index: 9;
+    top: 100%;
+    width: 100%;
+    transition: visibility .2s, opacity 0s;
+    visibility: hidden;
+    opacity: 0;
+
+    li {
+      @include border($color-6, "border-left");
+      @include border($color-6, "border-right");
+      padding: 10px 20px;
+      font-size: 12px;
+
+      &:first-of-type {
+        @include border($color-6, "border-top");
+
+        &:hover {
+          @include border($color-1, "border-top");
+        }
+      }
+
+      &:last-of-type {
+        @include border($color-6, "border-bottom");
+
+        &:hover {
+          @include border($color-1, "border-bottom");
+        }
+      }
+
+      &:hover {
+        @include border($color-1, "border-left");
+        @include border($color-1, "border-right");
+
+        background-color: $color-1;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+
+    & + i {
+      position: absolute;
+      right: 10px;
+      bottom: 50%;
+      transform: translateY(50%);
+      transition: transform .1s;
+    }
+  }
+
+  &:focus + ul {
+    visibility: visible;
+    opacity: 1;
+
+    & + i {
+      transform: rotate(-180deg) translateY(-50%);
+      transition: transform .1s;
+    }
+  }
+}

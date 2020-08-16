@@ -34,7 +34,12 @@
   "category": {
     "title": "Categoria",
     "fields": {
-      "name": "Nome"
+      "name": "Nome",
+      "parent": "Categoria Pai"
+    },
+    "field-placeholder": {
+      "name": "Digite o nome da categoria(obrigatório)",
+      "parent": "Selecione a categori pai(opcional)"
     }
   }
 }

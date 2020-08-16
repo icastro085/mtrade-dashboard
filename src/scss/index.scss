@@ -3,12 +3,17 @@
 @import "container";
 @import "structure";
 @import "form";
+@import "select";
 
 html, body {
   background-color: $background-color;
   * {
     font-family: 'Roboto', sans-serif;
     color: $color-2;
+
+    &::placeholder {
+      opacity: .4;
+    }
   }
 }
 

@@ -1,9 +1,15 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import useCategories from './hooks/useCategories';
+
 import BarControl from './ControlBar';
+import Select from './Select';
+
+import CategoryModel from './model/Category';
 
 export default function CategoryRegistry() {
   const history = useHistory();
+  const { data = {} } = useCategories();
 
   const onClickBack = () => {
     history.push('/category');
@@ -16,6 +22,12 @@ export default function CategoryRegistry() {
   const onClickSave = () => {
     console.log('safasdfasdfad');
   };
+
+  const onChangeSelect = (parentId, valueSelected) => {
+    console.log(parentId, valueSelected, CategoryModel);
+  };
+
+  const { categories = [] } = data;
 
   return (
     <>
@@ -40,8 +52,21 @@ export default function CategoryRegistry() {
       <form>
         <div className="row">
           <div className="col-6">
+            <Select
+              onChange={onChangeSelect}
+              placeholder={__('category.field-placeholder.parent')}
+              items={categories.map(({ _id, name }) => ({ id: _id, value: name }))}>
+              {__('category.fields.parent')}
+            </Select>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-6">
             <label>{__('category.fields.name')}</label>
-            <input type="text" />
+            <input
+              type="text"
+              placeholder={__('category.field-placeholder.name')} />
           </div>
         </div>
       </form>
