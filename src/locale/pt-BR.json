@@ -30,6 +30,7 @@
     "next": "Pŕoximo"
   },
   "category": {
+    "title": "Categoria",
     "table": {
       "header": {
         "name": "Nome"

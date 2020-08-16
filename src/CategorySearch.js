@@ -11,7 +11,7 @@ export default function CategorySearch() {
 
   return (
     <>
-      <BarControl title="Categoria">
+      <BarControl title="category.title">
         <button type="button" className="primary">
           <i className="fas fa-plus mr-2" /> {__('input-search.buttons.create')}
         </button>
