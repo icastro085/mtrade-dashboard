@@ -1,3 +1,5 @@
+@import "~toastr/toastr";
+
 @import "variables";
 @import "reset";
 @import "container";
@@ -7,8 +9,9 @@
 
 html, body {
   background-color: $background-color;
+  font-family: 'Roboto', sans-serif;
+
   * {
-    font-family: 'Roboto', sans-serif;
     color: $color-2;
 
     &::placeholder {
@@ -17,6 +20,6 @@ html, body {
   }
 }
 
-table button {
-  font-size: 12px;
+.toast * {
+  color: inherit !important;
 }

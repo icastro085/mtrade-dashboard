@@ -24,6 +24,7 @@
     "window": true,
     "__": true,
     "FileReader": true,
-    "localStorage": true
+    "localStorage": true,
+    "toastr": true
   }
 }

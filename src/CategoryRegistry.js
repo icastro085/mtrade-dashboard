@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import useCategory from './hooks/useCategory';
 import useCategories from './hooks/useCategories';
-import useCategoryMutation from './hooks/useCategoryMutation';
 
 import BarControl from './ControlBar';
 import Select from './Select';
 
-import CategoryModel from './model/Category';
-
-const { error } = console;
-
 export default function CategoryRegistry() {
+  const { id: categoryId } = useParams();
   const history = useHistory();
+
   const { data = {} } = useCategories();
-  const [category, setCategory] = useState({ ...CategoryModel });
-  const [mutation] = useCategoryMutation();
+  const {
+    category,
+    setCategory,
+    saveCategory,
+    error,
+    setError,
+  } = useCategory({ id: categoryId });
 
   const onClickBack = () => {
     history.push('/category');
@@ -27,17 +30,18 @@ export default function CategoryRegistry() {
   const onClickSave = async () => {
     try {
       const {
-        category: categoryResponse = {},
+        category: categoryResponse,
         error: categoryError,
-      } = await mutation(category);
+      } = await saveCategory(category);
 
       if (categoryError) {
-        error(categoryError);
+        setError(categoryError);
       } else {
         setCategory(categoryResponse);
+        toastr.success(__('toast.success'));
       }
     } catch (e) {
-      error(e);
+      setError(e.message);
     }
   };
 
@@ -52,6 +56,12 @@ export default function CategoryRegistry() {
     category.name = target.value;
     setCategory({ ...category });
   };
+
+  useEffect(() => {
+    if (error) {
+      toastr.error(error);
+    }
+  }, [error]);
 
   const { categories = [] } = data;
 

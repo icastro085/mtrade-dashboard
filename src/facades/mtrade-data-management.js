@@ -31,6 +31,16 @@ export const addCategory = async (variables = {}) => mtradeDM({
   variables,
 });
 
+export const updateCategory = async (variables = {}) => mtradeDM({
+  operationName: 'UpdateCategory',
+  variables,
+});
+
+export const getCategory = async (variables = {}) => mtradeDM({
+  operationName: 'GetCategoryById',
+  variables,
+});
+
 export const getCategories = async (variables = {}) => mtradeDM({
   operationName: 'GetCategories',
   variables,

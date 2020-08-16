@@ -3,6 +3,13 @@
     "title": "Sistema de configurações",
     "welcome": "Bem-vindo!"
   },
+  "toast": {
+    "success":"Suas alterações foram publicadas",
+    "error-empty-field": "Existem campos obrigatórios que não foram preenchidos",
+    "internal-error": "Atenção! ocorreu um erro interno, tente novamente mais tarde",
+    "not-found-error": "Atenção! dados não encontrados",
+    "removed-success": "Item removido com sucesso"
+  },
   "sidebar": {
     "home": "Home",
     "category": "Categoria",

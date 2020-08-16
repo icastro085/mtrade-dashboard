@@ -108,6 +108,10 @@ table {
   th {
     @include border($color-4, 'border-bottom');
   }
+
+  & button {
+    font-size: 12px;
+  }
 }
 
 .pagination {

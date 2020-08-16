@@ -1,6 +1,12 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 export default function CategorySearchTable({ categories }) {
+  const history = useHistory();
+  const onEdit = (id) => {
+    history.push(`/category/${id}`);
+  };
+
   return (
     <table className="mb-5">
       <thead>
@@ -15,7 +21,7 @@ export default function CategorySearchTable({ categories }) {
             <tr key={_id}>
               <td>{name}</td>
               <td className="text-right">
-                <button type="button" className="mr-2">
+                <button type="button" className="mr-2" onClick={() => onEdit(_id)}>
                   <i className="fas fa-edit mr-1" /> {__('table.buttons.edit')}
                 </button>
                 <button type="button">
