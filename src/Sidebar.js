@@ -2,7 +2,10 @@ import React from 'react';
 import classNames from 'classnames';
 import { useLocation } from 'react-router-dom';
 
-const isSelected = ({ pathname }, path) => pathname === path;
+const isSelected = ({ pathname }, path) => (
+  pathname.split('/')[1] === path.split('/')[1]
+);
+
 const items = [
   [
     'fas fa-home',

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import useCategories from './hooks/useCategories';
 
 import BarControl from './ControlBar';
@@ -8,12 +9,19 @@ import Pagination from './Pagination';
 export default function CategorySearch() {
   const { isLoading, error, data = {} } = useCategories();
   const { categories = [], total = 0 } = data || {};
+  const history = useHistory();
+
+  const onClickRegistry = () => {
+    history.push('/category/registry');
+  };
 
   return (
     <>
-      <BarControl title="category.title">
-        <button type="button" className="primary">
-          <i className="fas fa-plus mr-2" /> {__('input-search.buttons.create')}
+      <BarControl
+        icon={<i className="fas fa-sitemap" />}
+        title="category.title">
+        <button type="button" className="primary" onClick={onClickRegistry}>
+          <i className="fas fa-plus mr-2" /> {__('buttons.create')}
         </button>
       </BarControl>
 

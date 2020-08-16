@@ -9,6 +9,7 @@ import Header from './Header';
 import Home from './Home';
 import Sidebar from './Sidebar';
 import CategorySearch from './CategorySearch';
+import CategoryRegistry from './CategoryRegistry';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
             <Switch>
               <Route exact path="/"><Home /></Route>
               <Route exact path="/category"><CategorySearch /></Route>
+              <Route exact path="/category/:id"><CategoryRegistry /></Route>
             </Switch>
           </main>
         </Router>

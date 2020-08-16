@@ -8,10 +8,11 @@
     "category": "Categoria",
     "product": "Producto"
   },
+  "buttons": {
+    "create": "Criar",
+    "save": "Salvar"
+  },
   "input-search": {
-    "buttons": {
-      "create": "Criar"
-    },
     "input": {
       "placeholder": "Digite o texto e tecle enter..."
     }
