@@ -1,17 +1,15 @@
 import useQueryURL from './useQueryURL';
+import { LIMIT_BY_PAGE } from '../facades/mtrade-data-management';
 
 export const calculateTotalPages = (totalItems = 0, itemsByPage = 10) => (
   Math.ceil(totalItems / itemsByPage)
 );
 
-export default function usePagination({
-  totalItems = 0,
-  itemsByPage = 10,
-} = {}) {
+export default function usePagination({ totalItems = 0 } = {}) {
   const { query, addQuery } = useQueryURL();
   const { page = 0 } = query;
   const totaItemsNormalized = totalItems ? Math.abs(totalItems) : 0;
-  const itemsByPageNormalized = itemsByPage ? Math.abs(itemsByPage) : 0;
+  const itemsByPageNormalized = Math.abs(LIMIT_BY_PAGE);
   const totalPages = calculateTotalPages(totaItemsNormalized, itemsByPageNormalized);
   const totalPagesNormalized = totalPages ? totalPages - 1 : 0;
 

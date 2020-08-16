@@ -20,7 +20,10 @@
     "buttons": {
       "edit": "Editar",
       "remove": "Remover"
-    }
+    },
+    "loading": "Carregando...",
+    "no-results": "Não há resultados",
+    "error-loading": "Um error ocorreu: {{error}}"
   },
   "pagination": {
     "previous": "Anterior",

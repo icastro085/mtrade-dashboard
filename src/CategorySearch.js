@@ -1,7 +1,7 @@
 import React from 'react';
 import useCategories from './hooks/useCategories';
 
-import InputSearch from './InputSearch';
+import BarControl from './ControlBar';
 import CategorySearchTable from './CategorySearchTable';
 import Pagination from './Pagination';
 
@@ -11,27 +11,22 @@ export default function CategorySearch() {
 
   return (
     <>
-      <div className="row">
-        <InputSearch className="col-6" />
-        <div className="col-6 text-right">
-          <button type="button" className="primary">
-            <i className="fas fa-plus mr-2" /> {__('input-search.buttons.create')}
-          </button>
-        </div>
-      </div>
-
-      <hr />
+      <BarControl title="Categoria">
+        <button type="button" className="primary">
+          <i className="fas fa-plus mr-2" /> {__('input-search.buttons.create')}
+        </button>
+      </BarControl>
 
       {
         error
-          ? <p>{`An error has occurred: ${error.message}`}</p>
+          ? <p>{__('table.error-loading', { error: error.message })}</p>
           : (
             categories.length
               ? <CategorySearchTable categories={categories} />
               : (
                 isLoading
-                  ? <p>Loading...</p>
-                  : <p>There is no results</p>
+                  ? <p>{__('table.loading')}</p>
+                  : <p>{__('table.no-results')}</p>
               )
           )
       }
