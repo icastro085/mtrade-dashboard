@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from 'react-query';
+import classNames from 'classnames';
+
 import useCategory from './hooks/useCategory';
 
 import BarControl from './ControlBar';
 import Select from './Select';
+import Loading from './Loading';
 
 import CategoryModel from './model/Category';
 
@@ -94,10 +97,14 @@ export default function CategoryRegistry() {
     }
   }, [qstatus]);
 
-  console.log(qstatus);
-
   return (
     <>
+      {
+        (qstatus === 'loading')
+          ? <Loading />
+          : null
+      }
+
       <BarControl
         icon={<i className="fas fa-sitemap" />}
         title="category.title"
@@ -111,7 +118,15 @@ export default function CategoryRegistry() {
           <i className="fas fa-plus mr-2" /> {__('buttons.new')}
         </button>
 
-        <button type="button" className="primary" onClick={onClickSave}>
+        <button
+          type="button"
+          className={classNames(
+            'primary',
+            {
+              disabled: [qstatus, mstatus].some((element) => ['loading', 'error'].includes(element)),
+            },
+          )}
+          onClick={onClickSave}>
           <i className="fas fa-save mr-2" /> {__('buttons.save')}
         </button>
       </BarControl>

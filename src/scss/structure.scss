@@ -174,3 +174,55 @@ hr {
 .d-flex {
   display: flex;
 }
+
+.loading-overlayer {
+  background-color: rgba($color: #000000, $alpha: .5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9;
+}
+
+.loading {
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  z-index: 99;
+  transform: translate(-50%, -50%);
+  border: 1px solid $color-2;
+
+  &::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 2px;
+    top: 0;
+    left: 50%;
+    background-color: $color-2;
+    position: absolute;
+    transform: translateX(-50%);
+    animation: loading 0.5s linear infinite;
+  }
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg) translateX(-50%);
+  }
+
+  to {
+    transform: rotate(180deg) translateX(-50%);
+  }
+}
+
+.disabled, .disabled * {
+  pointer-events: none;
+  opacity: 0.8;
+  user-select: none;
+}
