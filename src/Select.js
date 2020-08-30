@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Select({
   value: valueDefault = '',
@@ -7,12 +7,23 @@ export default function Select({
   onChange = () => {},
   children,
 }) {
-  const { value: valueSelected = '' } = items
-    .find(({ id }) => id === valueDefault) || {};
+  const getValue = (selectedId) => {
+    const { value = '' } = items
+      .find(({ id }) => id === selectedId) || {};
+
+    return value;
+  };
+
+  const [valueSelected, setValueSelected] = useState({});
 
   const onChangeSelect = (id, value) => {
+    setValueSelected(getValue(id));
     onChange(id, value);
   };
+
+  useEffect(() => {
+    setValueSelected(getValue(valueDefault));
+  }, [valueDefault]);
 
   return (
     <>

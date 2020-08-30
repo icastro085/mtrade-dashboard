@@ -6,7 +6,7 @@
   "toast": {
     "success":"Suas alterações foram publicadas",
     "error-empty-field": "Existem campos obrigatórios que não foram preenchidos",
-    "internal-error": "Atenção! ocorreu um erro interno, tente novamente mais tarde",
+    "internal-error": "Atenção! ocorreu um erro interno, tente novamente mais tarde - {{error}}",
     "not-found-error": "Atenção! dados não encontrados",
     "removed-success": "Item removido com sucesso"
   },
@@ -36,7 +36,7 @@
   },
   "pagination": {
     "previous": "Anterior",
-    "next": "Pŕoximo"
+    "next": "Próximo"
   },
   "category": {
     "title": "Categoria",
