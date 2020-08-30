@@ -8,7 +8,12 @@ const mtradeDMInstance = axios.create({
   timeout: 1000,
   headers: { Authorization: 'Bearer TOKE_TEST' },
   transformResponse: [(response) => {
-    const { data = {} } = JSON.parse(response);
+    const { data = {}, errors } = JSON.parse(response);
+
+    if (errors) {
+      throw new Error(errors.map(({ message }) => message).join(', '));
+    }
+
     return data;
   }],
 });

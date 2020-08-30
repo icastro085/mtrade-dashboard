@@ -12,7 +12,7 @@ export default function CategorySearch() {
   const history = useHistory();
 
   const onClickRegistry = () => {
-    history.push('/category/registry');
+    history.push(`/category/registry-${Math.random()}`);
   };
 
   return (

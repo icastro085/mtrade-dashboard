@@ -47,7 +47,7 @@ export default function CategoryRegistry() {
   } = useQuery(
     ['GetCategory', id],
     async (_, categoryId) => {
-      const { category: c } = (categoryId === 'registry')
+      const { category: c } = /registry/.test(categoryId)
         ? { category: { ...CategoryModel } }
         : await getCategory({ categoryId });
 
@@ -65,7 +65,7 @@ export default function CategoryRegistry() {
   };
 
   const onClickRegistry = () => {
-    history.push('/category/registry');
+    history.push(`/category/registry-${Math.random()}`);
   };
 
   const onClickSave = async () => {
