@@ -109,8 +109,17 @@ table {
     @include border($color-4, 'border-bottom');
   }
 
-  & button {
-    font-size: 12px;
+  td {
+    button {
+      font-size: 12px;
+    }
+
+    &.actions button {
+      border-radius: 50%;
+      padding: 10px;
+      width: 40px;
+      height: 40px;
+    }
   }
 }
 
@@ -173,6 +182,15 @@ hr {
 
 .d-flex {
   display: flex;
+
+  &.justify-content {
+    &.space-between {
+      justify-content: space-between;
+    }
+    &.flex-end {
+      justify-content: flex-end;
+    }
+  }
 }
 
 .loading-overlayer {
@@ -225,4 +243,74 @@ hr {
   pointer-events: none;
   opacity: 0.8;
   user-select: none;
+}
+
+.error {
+  color: $color-error;
+}
+
+.invalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 80%;
+  color: #dc3545;
+}
+
+.is-invalid + .invalid-feedback {
+  display: block;
+}
+
+.popup-background-layer {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.popup-content {
+  background-color: transparent;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.popup-content-layer {
+  background-color: #FFF;
+  padding: 20px;
+  position: fixed;
+
+  &.side {
+    height: 100%;
+    min-width: 75%;
+    top: 0;
+    right: 0;
+    animation: poupp-side-animation .2s linear;
+  }
+
+  &.modal {
+    border-radius: $border-radius;
+    min-width: 500px;
+    min-height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+@keyframes poupp-side-animation {
+  from {
+    right: -75%;
+  }
+
+  to {
+    right: 0;
+  }
 }

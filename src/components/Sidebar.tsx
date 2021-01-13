@@ -1,12 +1,17 @@
 import React from 'react';
 import classNames from 'classnames';
 import { useLocation } from 'react-router-dom';
+import { t } from 'locale';
 
-const isSelected = ({ pathname }, path) => (
+interface IIsSelected {
+  pathname: string;
+}
+
+const isSelected = ({ pathname }: IIsSelected, path: string): boolean => (
   pathname.split('/')[1] === path.split('/')[1]
 );
 
-const items = [
+const items: string[][] = [
   [
     'fas fa-home',
     'home',
@@ -37,7 +42,7 @@ export default function Sidebar() {
               className={classNames({ selected: isSelected(location, link) })}>
               <a href={`/#${link}`}>
                 <i className={classNames('mr-2', icon)} />
-                {__(`sidebar.${key}`)}
+                {t(`sidebar.${key}`)}
               </a>
             </li>
           ))

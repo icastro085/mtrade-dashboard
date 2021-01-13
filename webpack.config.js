@@ -1,11 +1,14 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const path = require('path');
 
+const extensions = ['.ts', '.tsx', '.js', '.jsx'];
+
 const config = {
-  entry: ['@babel/polyfill','./src/index.js'],
+  entry: ['./src/index.tsx'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name][hash].bundle.js'
@@ -19,13 +22,15 @@ const config = {
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
-    // new FaviconsWebpackPlugin('./src/img/favicon.ico'),
+    new ESLintPlugin({
+      extensions,
+    }),
   ],
   module: {
     rules: [
       {
-        test: /\.js$/,
-        use: ['babel-loader', 'eslint-loader'],
+        test: /\.(js|ts)x?$/,
+        use: ['babel-loader'],
       },
       {
         test: /\.s[ac]ss$/i,
@@ -47,6 +52,15 @@ const config = {
         loader: 'webpack-graphql-loader'
       },
     ],
+  },
+
+  resolve: {
+    extensions,
+    plugins: [new TsconfigPathsPlugin({ configFile: path.resolve(__dirname, 'tsconfig.json') })],
+  },
+
+  node: {
+    net: 'empty',
   },
 };
 

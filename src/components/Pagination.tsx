@@ -1,10 +1,15 @@
 import React from 'react';
-import usePagination from './hooks/usePagination';
+import usePagination from '../hooks/usePagination';
+import { t } from '../locale';
 
 const PAGINATION_RANGE = 8;
 const PAGE_MIN = 1;
 
-export default function Pagination({ totalItems }) {
+interface Props {
+  totalItems: number;
+}
+
+export default function Pagination({ totalItems }: Props) {
   const {
     previousPage,
     currentPage,
@@ -36,7 +41,7 @@ export default function Pagination({ totalItems }) {
             onClick={() => setCurrentPage(previousPage)}
             role="button"
             tabIndex={0}>
-            {__('pagination.previous')}
+            {t('pagination.previous')}
           </a>
         </li>
 
@@ -121,7 +126,7 @@ export default function Pagination({ totalItems }) {
             onClick={() => setCurrentPage(nextPage)}
             role="button"
             tabIndex={nextPage}>
-            {__('pagination.next')}
+            {t('pagination.next')}
           </a>
         </li>
       </ul>

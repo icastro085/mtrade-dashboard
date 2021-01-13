@@ -13,6 +13,4 @@ i18next.init({
   },
 });
 
-export const initializeLanguage = async () => {
-  global.__ = await i18next.changeLanguage(INITIAL_LANG);
-};
+export const t = (...args): any => i18next.t(...args);

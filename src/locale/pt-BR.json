@@ -32,7 +32,7 @@
     },
     "loading": "Carregando...",
     "no-results": "Não há resultados",
-    "error-loading": "Um error ocorreu: {{error}}"
+    "error-loading": "Um error ocorreu - {{error}}"
   },
   "pagination": {
     "previous": "Anterior",
@@ -40,6 +40,8 @@
   },
   "category": {
     "title": "Categoria",
+    "title-edit": "Editar Categoria",
+    "title-create": "Criar Categoria",
     "fields": {
       "name": "Nome",
       "parent": "Categoria Pai"
