@@ -17,7 +17,7 @@ export default function usePagination({ totalItems = 0 } = {}) {
   const previousPage = Math.max(0, currentPage - 1);
   const nextPage = Math.min(currentPage + 1, totalPagesNormalized);
 
-  const setCurrentPage = (updatedCurrentPage) => {
+  const setCurrentPage = (updatedCurrentPage: number) => {
     addQuery({ page: updatedCurrentPage });
   };
 

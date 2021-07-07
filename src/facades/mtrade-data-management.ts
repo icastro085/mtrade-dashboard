@@ -3,6 +3,15 @@ import schema from '../graphql/schema.graphql';
 
 export const LIMIT_BY_PAGE = 10;
 
+interface IError {
+  message: string;
+}
+
+interface IMtradeParams {
+  operationName: string;
+  variables: any;
+}
+
 const mtradeDMInstance = axios.create({
   baseURL: 'http://localhost:4000/data-resource',
   timeout: 1000,
@@ -11,14 +20,14 @@ const mtradeDMInstance = axios.create({
     const { data = {}, errors } = JSON.parse(response);
 
     if (errors) {
-      throw new Error(errors.map(({ message }) => message).join(', '));
+      throw new Error(errors.map(({ message }: IError): string => message).join(', '));
     }
 
     return data;
   }],
 });
 
-const mtradeDM = async ({ operationName, variables = {} }) => {
+const mtradeDM = async ({ operationName, variables = {} }: IMtradeParams) => {
   const { data } = await mtradeDMInstance.post('/', {
     query: schema,
     operationName,

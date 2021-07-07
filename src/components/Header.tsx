@@ -1,9 +1,10 @@
 import React from 'react';
+import { t } from 'locale';
 
 export default function Header() {
   return (
     <header className="header">
-      <a href="/#/">{__('app.title')}</a>
+      <a href="/#/">{t('app.title')}</a>
 
       <div className="options">
         <div className="user">

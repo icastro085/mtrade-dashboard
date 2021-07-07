@@ -1,22 +1,35 @@
 import React, { useState, useEffect } from 'react';
+import { t } from '../locale';
+
+export interface IItems { id: string; value: string }
+
+export interface Props {
+  name?: string;
+  value?: string;
+  items: IItems[];
+  placeholder?: string;
+  onChange?: (id: string, value: string) => void;
+  children: any;
+}
 
 export default function Select({
+  name,
   value: valueDefault = '',
   items = [],
   placeholder = '',
-  onChange = () => {},
+  onChange = (id: string, value: string) => null,
   children,
-}) {
-  const getValue = (selectedId) => {
+}: Props) {
+  const getValue = (selectedId: string): string => {
     const { value = '' } = items
       .find(({ id }) => id === selectedId) || {};
 
     return value;
   };
 
-  const [valueSelected, setValueSelected] = useState({});
+  const [valueSelected, setValueSelected] = useState('');
 
-  const onChangeSelect = (id, value) => {
+  const onChangeSelect = (id: any, value: string) => {
     setValueSelected(getValue(id));
     onChange(id, value);
   };
@@ -30,11 +43,13 @@ export default function Select({
       <label>{children}</label>
       <div className="select-container">
         <input
+          autoComplete="off"
+          name={name}
           onChange={() => {}}
           type="text"
           value={valueSelected}
           className="select"
-          placeholder={placeholder} />
+          placeholder={t(placeholder)} />
         <ul>
           {
             items.map(({ id, value }) => (

@@ -1,11 +1,5 @@
-mutation AddCategory($category: CategoryInput) {
-  category: addCategory(category: $category) {
-    ...Category
-  }
-}
-
-mutation UpdateCategory($categoryId: ID!, $category: CategoryInput) {
-  category: updateCategory(id: $categoryId, category: $category) {
+mutation SaveCategory($categoryId: ID, $category: CategoryInput) {
+  category: saveCategory(id: $categoryId, category: $category) {
     ...Category
   }
 }
@@ -41,6 +35,7 @@ query GetCategories(
 fragment Category on Category {
   _id
   name
+  parentId
   parent {
     _id
     name

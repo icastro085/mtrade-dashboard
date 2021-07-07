@@ -1,23 +1,24 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
 import toastr from 'toastr';
+
+import { GraphQLClient, ClientContext } from 'graphql-hooks';
 
 import './scss/index.scss';
 
-import { store } from './redux';
 import App from './App';
-import { initializeLanguage } from './locale';
+
+const client = new GraphQLClient({
+  url: 'http://localhost:4000/data-resource',
+});
 
 const container = document.querySelector('#app');
 
 const initializeApp = async () => {
-  await initializeLanguage();
-
   render(
-    <Provider store={store}>
+    <ClientContext.Provider value={client}>
       <App />
-    </Provider>,
+    </ClientContext.Provider>,
     container,
   );
 };

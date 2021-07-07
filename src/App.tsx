@@ -5,11 +5,10 @@ import {
   Route,
 } from 'react-router-dom';
 
-import Header from './Header';
-import Home from './Home';
-import Sidebar from './Sidebar';
-import CategorySearch from './CategorySearch';
-import CategoryRegistry from './CategoryRegistry';
+import Header from './components/Header';
+import Home from './pages/Home';
+import Sidebar from './components/Sidebar';
+import CategorySearch from './pages/CategorySearch';
 
 export default function App() {
   return (
@@ -20,9 +19,8 @@ export default function App() {
           <Sidebar />
           <main className="container">
             <Switch>
+              <Route path="/category"><CategorySearch /></Route>
               <Route exact path="/"><Home /></Route>
-              <Route exact path="/category"><CategorySearch /></Route>
-              <Route exact path="/category/:id"><CategoryRegistry /></Route>
             </Switch>
           </main>
         </Router>
